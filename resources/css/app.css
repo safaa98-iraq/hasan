@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--paper, #f4efe5);
+        color: var(--ink, #081a24);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background-color: var(--sun, #efb657);
+        color: var(--ink, #081a24);
+    }
+}
+
+@layer components {
+    .eyebrow {
+        @apply text-[0.72rem] font-medium uppercase tracking-[0.35em];
+    }
+
+    .eyebrow-rule {
+        @apply inline-block h-px w-10 bg-accent align-middle;
+    }
+}

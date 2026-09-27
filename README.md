@@ -54,17 +54,16 @@ php artisan route:list --except-vendor
 
 الاختبارات معدّة لاستخدام SQLite في الذاكرة من `phpunit.xml`.
 
-Current scope: content management and travel presentation. There is no payment, reservation, departure calendar, or per-record ownership system. Dashboard accounts are explicitly assigned to English or Arabic; cross-language dashboard access is denied. Public registration is disabled by default. Email verification routes exist but verification is not enforced. Prices are localized display text. Review the full guide before deployment.
+Current scope: content management and travel presentation. There is no payment, reservation, departure calendar, or per-record ownership system. All authenticated accounts use one dashboard to edit English and Arabic content together. Public registration is disabled by default. Email verification routes exist but verification is not enforced. Prices are localized display text. Review the full guide before deployment.
 
 
 ## Dashboard access and themes
 
-- English login: `/admin/en/login` — local account `admin-en@mesotravels.test`.
-- Arabic login: `/admin/ar/login` — local account `admin-ar@mesotravels.test`.
-- Generated local passwords: `storage/app/private/dashboard-accounts.txt` (private; never commit).
-- Real accounts: `php artisan dashboard:account EMAIL en` or `ar`; password entry is hidden.
-- Each dashboard includes short translated usage hints and its own contact email settings.
-- `.test` contacts are local examples, not real inboxes; public mail links stay disabled until replaced.
-- Dark/light mode follows the system initially and remembers your selection across pages.
-- On another installation, run `php artisan migrate` and provision authorized dashboard accounts. Existing accounts are not automatically elevated.
-# hasan
+- Shared login: `/login`; shared dashboard: `/admin`.
+- English and Arabic content fields and contact email settings appear together.
+- Existing accounts and passwords still work; language-specific bookmarks redirect to shared routes.
+- Generated local passwords remain in `storage/app/private/dashboard-accounts.txt` (private; never commit).
+- Create/update an account: `php artisan dashboard:account EMAIL`; password entry is hidden.
+- Short usage hints and the dark/light toggle remain available.
+- `.test` contacts are examples, not real inboxes; public mail links stay disabled until replaced.
+- Every authenticated account can manage content. Public registration is disabled by default.

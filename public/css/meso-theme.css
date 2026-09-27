@@ -1,0 +1,57 @@
+/* Shared theme: fixed brand colors remain readable on photographic/dark sections. */
+html { color-scheme: light; }
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0b1923;
+  --paper-bright: #122632;
+  --ink: #f1e9d9;
+  --ink-soft: #c0ced2;
+  --line: rgba(224, 234, 239, .2);
+  --lapis: #91cedf;
+  --river: #8bc6d8;
+  --success: #8ed4ad;
+  --danger: #f2a298;
+}
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 38px; padding: 7px 12px; border: 1px solid currentColor; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: .76rem; line-height: 1.3; cursor: pointer; white-space: nowrap; }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle:hover { background: rgb(128 128 128 / 15%); }
+.theme-toggle:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+.theme-sun, [data-theme="dark"] .theme-moon { display: none; }
+[data-theme="dark"] .theme-sun { display: block; }
+.guest-theme-tools { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; color: #fffdf8; margin-bottom: 22px; }
+html[data-theme="dark"] .journey { background: #1b3039; }
+html[data-theme="dark"] .route-number { background: #1b3039; }
+html[data-theme="dark"] .route-start .route-number, html[data-theme="dark"] .route-return .route-number { background: #91cedf; color: #061b2a; }
+html[data-theme="dark"] .route-stop small { color: var(--ink-soft); }
+html[data-theme="dark"] .route::before { background: var(--line); }
+html[data-theme="dark"] .route-number, html[data-theme="dark"] .journey-note { border-color: var(--line); }
+html[data-theme="dark"] .closing { background: #392f20; }
+html[data-theme="dark"] .closing-pattern { opacity: .25; }
+html[data-theme="dark"] .gold-button { color: #081a24; }
+html[data-theme="dark"] .site-footer { background: #06121b; }
+html[data-theme="dark"] .detail-card-dark { background: #10232f; }
+html[data-theme="dark"] .stop-badge { background: #284554; color: #e8d1a4; }
+html[data-theme="dark"] .outline-button:hover { background: #234151; color: var(--ink); }
+html[data-theme="dark"] .journey-actions .button:hover { color: #081a24; }
+html[data-theme="dark"] .admin-body { --admin-success: #8ed4ad; --admin-danger: #f2a298; }
+html[data-theme="dark"] .admin-page-title h1, html[data-theme="dark"] .admin-section-title { color: var(--ink); }
+html[data-theme="dark"] .admin-header-link { color: #fffdf8; }
+html[data-theme="dark"] .admin-body input:not([type="checkbox"]):not([type="hidden"]),
+html[data-theme="dark"] .admin-body textarea, html[data-theme="dark"] .admin-body select,
+html[data-theme="dark"] .account-input, html[data-theme="dark"] .account-button-secondary { background-color: #0c1c27; color: var(--ink); }
+html[data-theme="dark"] .admin-body .btn-primary, html[data-theme="dark"] .account-body .account-button-primary,
+html[data-theme="dark"] .admin-body input::file-selector-button { background: #91cedf; color: #061b2a; border-color: #91cedf; }
+html[data-theme="dark"] .admin-body .btn-primary:hover, html[data-theme="dark"] .account-body .account-button-primary:hover { background: #b1e3ef; }
+html[data-theme="dark"] .admin-body .btn-accent { color: #081a24; }
+html[data-theme="dark"] .admin-flash-success, html[data-theme="dark"] .account-status { background: #173c30; color: #a8e5bc; }
+html[data-theme="dark"] .admin-flash-error { background: #432d2a; color: #ffc4ba; }
+html[data-theme="dark"] .account-saved { color: #a8e5bc; }
+html[data-theme="dark"] .account-errors, html[data-theme="dark"] .account-button-danger { color: #ffc4ba; }
+html[data-theme="dark"] .admin-body .bg-white { background: var(--paper-bright); }
+html[data-theme="dark"] .account-button-secondary:hover { background: #234151; }
+html[data-theme="dark"] .error-page { color: #fffdf8; }
+@media (max-width: 560px) { .site-header .theme-toggle { width: 36px; height: 36px; padding: 7px; } .site-header .theme-toggle span { display: none; } .header-actions { gap: 8px; } }
+html[data-theme="dark"] ::selection { color: #081a24; }
+html[data-theme="dark"] .button-light:hover, html[data-theme="dark"] .button-light:focus-visible { color: #081a24; }
+html[dir="rtl"] .account-body { font-family: var(--arabic-sans); }
+html[dir="rtl"] .account-section-heading h1, html[dir="rtl"] .account-section-heading h2 { line-height: 1.5; }

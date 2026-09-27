@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل المشروع — Meso Travels</title>
+<style>
+:root { color-scheme: light; --ink: #081a24; --lapis: #063e61; --sun: #efb657; --paper: #f4efe5; --white: #fffdf8; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.95 Tahoma, Arial, sans-serif; }
+header { background: #061b2a; color: var(--white); padding: 44px max(24px, calc((100% - 1080px)/2)); border-bottom: 5px solid var(--sun); }
+header p { margin: 0; } header strong { display: block; color: var(--sun); font: 36px/1.4 Georgia,serif; }
+main { max-width: 1160px; margin: 36px auto; padding: 44px; background: var(--white); border: 1px solid #d8d2c7; }
+h1,h2,h3 { line-height: 1.65; color: var(--lapis); scroll-margin-top: 20px; }
+h1 { font-size: 30px; } h2 { border-bottom: 1px solid #ded9ce; padding-bottom: 12px; margin-top: 44px; font-size: 25px; } h3 { font-size: 20px; margin-top: 30px; }
+a { color: var(--lapis); text-underline-offset: 4px; overflow-wrap: anywhere; }
+p,li { overflow-wrap: anywhere; }
+pre { direction: ltr; text-align: left; overflow-x: auto; background: #061b2a; color: #fffdf8; padding: 22px; border-radius: 6px; font-size: 14px; line-height: 1.8; }
+code { direction: ltr; unicode-bidi: isolate; font-family: Consolas, Menlo, monospace; font-size: .86em; }
+p code, li code, td code { display: inline-block; max-width: 100%; background: #f0ece3; padding-inline: 5px; border-radius: 3px; overflow-wrap: anywhere; }
+table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 15px; margin-block: 22px; }
+th,td { text-align: right; border: 1px solid #ddd6c9; padding: 10px 14px; vertical-align: top; }
+th { background: #e8d1a4; color: #061b2a; } tr:nth-child(even) { background: #f8f5ee; }
+blockquote { border-right: 4px solid var(--sun); margin-inline: 0; padding: 12px 22px; background: #f4efe5; }
+.heading-anchor { font-size: .65em; margin-inline-start: .6em; text-decoration: none; opacity: .35; }
+.diagram { margin: 24px 0; padding: 24px; border: 1px solid #ded9ce; background: #f4efe5; border-radius: 6px; } .diagram figcaption { font-weight: bold; color: #063e61; margin-bottom: 16px; } .diagram-steps { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; } .diagram-steps span { padding: 12px 20px; background: #fffdf8; border: 1px solid #c5baaa; border-radius: 4px; text-align: center; } .diagram p { font-size: 14px; margin-bottom: 0; }
+footer { max-width: 1160px; margin: 24px auto; text-align: center; font-size: 14px; }
+@media(max-width: 700px) { body { font-size: 15px; } main { margin: 0; padding: 24px 16px; border: 0; } h1 { font-size: 25px; } h2 { font-size: 22px; } pre { padding: 16px; } }
+@media print { body,main { background: white; } main { border: 0; margin: 0; padding: 0; } header { padding: 20px; print-color-adjust: exact; } pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #eee; color: #111; } table { display: table; font-size: 11px; } a { color: inherit; } .heading-anchor { display: none; } h2,h3 { break-after: avoid; } }
+</style>
+</head>
+<body>
+<header><strong>Meso Travels</strong><p>دليل المميزات والهيكل العام والتشغيل</p></header>
+<main><h1>دليل مشروع Meso Travels — ميسو ترافلز<a id="content-دليل-مشروع-meso-travels--ميسو-ترافلز" href="#content-دليل-مشروع-meso-travels--ميسو-ترافلز" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h1>
+<p>تاريخ المراجعة: 27 سبتمبر 2026.</p>
+<p>هذا المستند يصف ما ينفذه المشروع فعلياً: المميزات، تنظيم الملفات، البيانات، المسارات، إدارة المحتوى، نظام التصميم، والتشغيل. اسم العرض الحالي <strong>Meso Travels</strong>؛ بعض بيانات البذر القديمة تحتفظ باسم Iraq Revealed.</p>
+<h2>1. فكرة المشروع والمميزات<a id="content-1-فكرة-المشروع-والمميزات" href="#content-1-فكرة-المشروع-والمميزات" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>موقع لعرض رحلات ثقافية داخل العراق. يقرأ المحتوى من قاعدة البيانات ويعرضه باستخدام Laravel وBlade، مع لوحة لإدارة النصوص والرحلات والوجهات. الواجهة العامة بالعربية والإنجليزية، ولوحة إدارة واحدة لتحرير المحتوى العربي والإنجليزي معاً.</p>
+<table>
+<thead>
+<tr>
+<th>الجزء</th>
+<th>المميزات المتاحة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الرئيسية</td>
+<td>صورة ومقدمة، تعريف بالمشروع، أول رحلة منشورة ومحطاتها، رحلات إضافية، الوجهات المنشورة، فئات التجارب، مبادئ العمل، وخاتمة للتواصل</td>
+</tr>
+<tr>
+<td>تفاصيل الرحلة</td>
+<td>العنوان والوصف والسعر والمدة، عدد المحطات، خط السير، الصور، قوائم المشمول وغير المشمول، ورحلات أخرى منشورة</td>
+</tr>
+<tr>
+<td>تفاصيل الوجهة</td>
+<td>الاسم والمقدمة والنص والصورة، ومحطات الرحلات المنشورة مع رابط تفاصيل الرحلة</td>
+</tr>
+<tr>
+<td>اللغات</td>
+<td>مسارات عربية وإنجليزية، اتجاه RTL، وتبديل اللغة مع البقاء على صفحة الرحلة أو الوجهة نفسها</td>
+</tr>
+<tr>
+<td>إدارة المحتوى</td>
+<td>إنشاء وتعديل وحذف الرحلات والوجهات والفئات ومبادئ العمل والمحطات؛ عرض وتعديل مفاتيح نصوص الموقع الموجودة</td>
+</tr>
+<tr>
+<td>لوحة الملخص</td>
+<td>أعداد سجلات المحتوى وروابط الإدارة وقوائم مختصرة للوجهات والرحلات</td>
+</tr>
+<tr>
+<td>الحساب</td>
+<td>التسجيل والدخول والخروج، استعادة كلمة المرور وتأكيدها، تعديل الاسم والبريد وكلمة المرور، وحذف الحساب بعد تأكيد كلمة المرور</td>
+</tr>
+<tr>
+<td>الصور</td>
+<td>رفع صورة للوجهة أو الرحلة أو المحطة أو سجل نصوص؛ عرض رسومات SVG التجريبية في التخزين العام</td>
+</tr>
+<tr>
+<td>الهاتف والوصول</td>
+<td>تصميم متجاوب، جداول قابلة للتمرير، روابط انتقال للمحتوى، تركيز مرئي، تسميات حقول ورسائل خطأ، وإغلاق قائمة الهاتف بمفتاح Escape</td>
+</tr>
+</tbody>
+</table>
+<h3>حدود النطاق الحالي<a id="content-حدود-النطاق-الحالي" href="#content-حدود-النطاق-الحالي" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<ul>
+<li>لا توجد حجوزات أو مدفوعات أو تقويم مواعيد أو توافر مقاعد أو فواتير أو إدارة عملاء.</li>
+<li>الأسعار والمدد نصوص عرض ثنائية اللغة؛ لا توجد حسابات مالية أو عملات محسوبة أو تسعير حسب عدد الأشخاص.</li>
+<li>الاستفسار يفتح برنامج البريد لدى الزائر باستخدام <code>mailto:</code>. لا يوجد نموذج تواصل يرسل من الخادم أو يحفظ الرسائل.</li>
+<li>الوصول إلى الإدارة متاح للحسابات المسجلة عبر دخول موحد. التسجيل العام معطل افتراضياً؛ البيانات السياحية مشتركة وثنائية اللغة وليست موقعين مستقلين.</li>
+<li>توجد مسارات وقوالب للتحقق من البريد، لكن <code>User</code> لا يطبّق <code>MustVerifyEmail</code>، ولا تستخدم الإدارة وسيط <code>verified</code>. التحقق من البريد غير مفروض.</li>
+<li>المعرض يقرأ <code>gallery</code> من قاعدة البيانات ويضيف صور المحطات. لا توجد واجهة مستقلة لرفع صور المعرض أو ترتيبها.</li>
+<li>جميع الفئات ومبادئ العمل تظهر في الرئيسية؛ لا تملك حالة نشر. الفئات وصفية وليست تصنيفاً مرتبطاً بالرحلات أو الوجهات.</li>
+<li>نوع الرحلة «خاصة وموجهة» ولغاتها «الإنجليزية، العربية» نصوص ثابتة في قالب التفاصيل وليست حقول إدارة.</li>
+<li>لا توجد واجهة لإدارة المستخدمين أو تنظيف الصور القديمة أو استعادة السجلات المحذوفة.</li>
+</ul>
+<h2>2. التقنيات والهيكل العام<a id="content-2-التقنيات-والهيكل-العام" href="#content-2-التقنيات-والهيكل-العام" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>التقنية</th>
+<th>الاستخدام</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PHP 8.2+ وLaravel 11</td>
+<td>المسارات والتحقق والجلسات والمصادقة والبيانات والتخزين</td>
+</tr>
+<tr>
+<td>Blade ومكونات Laravel</td>
+<td>الصفحات والتخطيطات والحقول المشتركة</td>
+</tr>
+<tr>
+<td>Eloquent</td>
+<td>نماذج المحتوى والعلاقات</td>
+</tr>
+<tr>
+<td>Tailwind CSS 3 وVite 6</td>
+<td>بناء أصول واجهات الإدارة والحساب</td>
+</tr>
+<tr>
+<td>Alpine.js</td>
+<td>تفاعلات المكونات، ومنها نافذة تأكيد حذف الحساب</td>
+</tr>
+<tr>
+<td>JavaScript مباشر</td>
+<td>قائمة الموقع العام وحالة الرأس عند التمرير</td>
+</tr>
+<tr>
+<td>PHPUnit</td>
+<td>اختبارات الصفحات والربط والإدارة والحساب</td>
+</tr>
+</tbody>
+</table>
+<p>قاعدة البيانات تحددها البيئة. يمكن استخدام SQLite محلياً أو ضبط MySQL في XAMPP؛ لا يعني وجود SQLite أن المشروع مقيد به. الاختبارات تستخدم SQLite في الذاكرة.</p>
+<pre><code class="language-text">app/
+├── Http/Controllers/
+│   ├── HomeController.php
+│   ├── JourneyController.php
+│   ├── PlaceController.php
+│   ├── ProfileController.php
+│   ├── Admin/              # إدارة المحتوى والمحطات والملخص
+│   ├── Auth/               # الحسابات وكلمات المرور والتحقق
+│   └── Concerns/UploadsImages.php
+├── Http/Middleware/SetAdminLocale.php
+├── Http/Requests/          # تحقق الدخول وتعديل الحساب
+├── Models/                 # نماذج البيانات
+├── Support/helpers.php     # اللغة والروابط والصور والتواصل
+├── Traits/HasLocalizedFields.php
+└── View/Components/        # AppLayout وAdminLayout وGuestLayout
+bootstrap/app.php          # تهيئة التطبيق ومسار الصحة
+config/                    # قاعدة البيانات والبريد والتخزين والتواصل
+database/
+├── migrations/            # الجداول والعلاقات
+├── factories/             # بيانات الاختبارات
+└── seeders/               # المحتوى والحساب التجريبيان
+public/
+├── assets/                # الشعار وصورة النهر
+├── css/                   # meso-travels / meso-admin / meso-account
+├── js/meso-travels.js      # قائمة الواجهة العامة
+├── build/                 # نواتج Vite
+└── storage                # رابط إلى storage/app/public
+resources/
+├── views/                 # الواجهة العامة والإدارة والحساب
+├── css/app.css            # مدخل Tailwind
+└── js/app.js              # تهيئة Alpine
+routes/web.php             # الموقع والإدارة
+routes/auth.php            # المصادقة والحساب
+storage/app/public/images/ # الصور المرفوعة والرسومات التجريبية
+tests/                     # اختبارات الوظائف والوحدات
+</code></pre>
+<h3>مسار الطلب ومسؤوليات الملفات<a id="content-مسار-الطلب-ومسؤوليات-الملفات" href="#content-مسار-الطلب-ومسؤوليات-الملفات" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<figure class="diagram"><figcaption>مسار الطلب</figcaption><div class="diagram-steps"><span>المتصفح</span><b>←</b><span>المسارات والوسطاء</span><b>←</b><span>المتحكم</span><b>↔</b><span>النماذج وقاعدة البيانات</span></div><p>يعيد المتحكم عرض Blade، وتصل النتيجة إلى المتصفح بصيغة HTML مع ملفات CSS وJavaScript.</p></figure>
+<p>لا تتطلب المسارات العامة الدخول. يقرأ <code>HomeController</code> النصوص والرحلات والوجهات المنشورة والفئات والمبادئ. تعرض متحكمات التفاصيل المحتوى المنشور فقط وتجهز بيانات النصوص واللغة البديلة.</p>
+<p>تتحقق متحكمات <code>Admin</code> من المدخلات وتحفظ المحتوى والصور. يعيد <code>JourneyStopController::index</code> التوجيه إلى تحرير الرحلة لأن المحطات تدار ضمن رحلة محددة. يعالج <code>ProfileController</code> معلومات الحساب وحذفه، وتدير متحكمات <code>Auth</code> الدخول وكلمات المرور.</p>
+<p>يعرض <code>AppLayout</code> الرأس والتذييل وعنوان الصفحة ووصفها ورابط اللغة البديلة. تستخدم لوحة الإدارة الموحدة <code>AdminLayout</code> مع حقول للغتين وترجمات متاحة في <code>lang/ar.json</code>، والمصادقة <code>GuestLayout</code>، والملف الشخصي <code>resources/views/components/account-layout.blade.php</code>.</p>
+<h2>3. قاعدة البيانات والعلاقات<a id="content-3-قاعدة-البيانات-والعلاقات" href="#content-3-قاعدة-البيانات-والعلاقات" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>تتضمن سجلات المحتوى معرفاً وتاريخي الإنشاء والتحديث. الحقول المنتهية بـ<code>_en</code> و<code>_ar</code> تخزن اللغتين في السجل نفسه.</p>
+<table>
+<thead>
+<tr>
+<th>النموذج / الجدول</th>
+<th>الحقول الرئيسية</th>
+<th>الاستخدام</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Page</code> / <code>pages</code></td>
+<td><code>key</code> فريد، <code>title_en/ar</code>، <code>body_en/ar</code>، <code>image_path</code></td>
+<td>نصوص الأقسام وبيانات الصفحة</td>
+</tr>
+<tr>
+<td><code>Journey</code> / <code>journeys</code></td>
+<td><code>slug</code> فريد، العنوان والمقدمة والوصف والسعر والمدة، <code>included</code> و<code>excluded</code>، الصورة، <code>gallery</code> بصيغة JSON، <code>order</code>، <code>is_published</code></td>
+<td>الرحلة وتفاصيلها</td>
+</tr>
+<tr>
+<td><code>JourneyStop</code> / <code>journey_stops</code></td>
+<td><code>journey_id</code>، <code>place_id</code> اختياري، الترتيب والاسم والتسمية والوصف والصورة</td>
+<td>محطة ضمن رحلة</td>
+</tr>
+<tr>
+<td><code>Place</code> / <code>places</code></td>
+<td><code>slug</code> فريد، الاسم والمقدمة والنص والصورة، الترتيب والنشر</td>
+<td>وجهة قابلة للربط بعدة محطات</td>
+</tr>
+<tr>
+<td><code>Category</code> / <code>categories</code></td>
+<td><code>slug</code> فريد، العنوان والوصف، <code>roman_numeral</code>، <code>order</code></td>
+<td>فئات التجارب</td>
+</tr>
+<tr>
+<td><code>ApproachPoint</code> / <code>approach_points</code></td>
+<td>العنوان والوصف والترتيب</td>
+<td>مبادئ العمل</td>
+</tr>
+<tr>
+<td><code>User</code> / <code>users</code></td>
+<td>الاسم والبريد الفريد وكلمة المرور المشفرة وتاريخ التحقق و<code>dashboard_locale</code></td>
+<td>الحسابات</td>
+</tr>
+</tbody>
+</table>
+<figure class="diagram"><figcaption>العلاقات الأساسية</figcaption><div class="diagram-steps"><span>رحلة واحدة<br><code>Journey</code></span><b>←</b><span>محطات متعددة<br><code>JourneyStop</code></span><b>→</b><span>وجهة اختيارية لكل محطة<br><code>Place</code></span></div><p>يمكن للوجهة نفسها الارتباط بمحطات متعددة. تحتفظ كل محطة برحلتها ونصوصها المستقلة.</p></figure>
+<p>لكل محطة رحلة واحدة، ويمكن ربطها بوجهة واحدة أو تركها بلا وجهة. قد تتكرر الوجهة داخل رحلة أو تظهر في عدة رحلات. حذف الرحلة يحذف محطاتها عبر <code>cascadeOnDelete</code>. حذف الوجهة يحول <code>place_id</code> إلى <code>null</code> ويحافظ على نصوص المحطات. لا توجد علاقة بين الفئات والرحلات أو علاقة ملكية بين المستخدم والمحتوى. الحقل التاريخي <code>dashboard_locale</code> محفوظ دون استخدام لتحديد الوصول أو لغة اللوحة. كل حساب مسجل يستطيع إدارة المحتوى؛ لا يوجد نظام أدوار منفصل.</p>
+<p>توجد أيضاً جداول Laravel للجلسات ورموز استعادة كلمة المرور والتخزين المؤقت والوظائف الخلفية. وجود جداول الوظائف لا يعني وجود نظام حجوزات أو رسائل مجدولة في التطبيق.</p>
+<h3>الترتيب والنشر<a id="content-الترتيب-والنشر" href="#content-الترتيب-والنشر" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<ul>
+<li>ترتب قوائم المحتوى الأساسية وفق <code>order</code> تصاعدياً. الخاصية <code>number</code> تعرض الترتيب بخانتين مثل <code>01</code>؛ لا يشترط تفرده ولا يعاد تسلسله تلقائياً عند الحذف.</li>
+<li>أول رحلة منشورة وفق الترتيب تظهر كرحلة أساسية، وتعرض بقية الرحلات المنشورة كرحلات إضافية.</li>
+<li>رابط رحلة أو وجهة غير منشورة يرجع <code>404</code>، حتى للمستخدم المسجل. لا يوجد مسار معاينة خاص للمسودات.</li>
+<li>تبقى محطة الرحلة المرتبطة بوجهة مخفية معروضة كنص، ويختفي رابط تلك الوجهة. تستبعد صفحة الوجهة محطات الرحلات غير المنشورة.</li>
+</ul>
+<h2>4. اللغات والروابط والصور<a id="content-4-اللغات-والروابط-والصور" href="#content-4-اللغات-والروابط-والصور" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>المسار بلا لاحقة إنجليزي، واللاحقة <code>/ar</code> عربية، وتقبل المسارات أيضاً <code>/en</code>. يعاد ضبط اللغة صراحة لكل طلب عام. لا يستبدل المتصفح نصوص الصفحة عند تغيير اللغة، ولا يعتمد اختيار اللغة على <code>localStorage</code>.</p>
+<p>تستخدم <code>HasLocalizedFields</code> القيمة العربية عند اختيارها؛ إذا كانت <code>null</code> تستخدم الإنجليزية. تحول Laravel الحقول الفارغة في النماذج المعتادة إلى <code>null</code>. لا توجد ترجمة آلية. تحول <code>localizedParagraphs()</code> النص المقسم بأسطر فارغة إلى فقرات مع تهريب النص، ولذلك لا تنفذ وسوم HTML المدخلة من الإدارة.</p>
+<table>
+<thead>
+<tr>
+<th>الدالة</th>
+<th>الوظيفة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>site_locale()</code></td>
+<td><code>ar</code> أو <code>en</code></td>
+</tr>
+<tr>
+<td><code>other_site_locale()</code></td>
+<td>اللغة الأخرى</td>
+</tr>
+<tr>
+<td><code>site_home_url($anchor)</code></td>
+<td>الرئيسية باللغة الحالية مع مرساة اختيارية</td>
+</tr>
+<tr>
+<td><code>site_language_url()</code></td>
+<td>اللغة الأخرى مع الحفاظ على الرحلة أو الوجهة الحالية</td>
+</tr>
+<tr>
+<td><code>site_image_url($path, $fallback)</code></td>
+<td>رابط صورة موحد وبديل اختياري</td>
+</tr>
+<tr>
+<td><code>site_contact_url($subject)</code></td>
+<td>رابط بريد من الإعداد مع عنوان رسالة اختياري</td>
+</tr>
+</tbody>
+</table>
+<p>تقبل دالة الصور مسارات مثل <code>images/places/photo.jpg</code>، والمسارات المسبوقة بـ<code>storage/</code> أو <code>assets/</code>، وروابط HTTP/HTTPS الكاملة. لا تفحص وجود الملف أو وصول الخادم الخارجي.</p>
+<h3>التخزين وحدود الرفع<a id="content-التخزين-وحدود-الرفع" href="#content-التخزين-وحدود-الرفع" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>السجل</th>
+<th>الحد البرمجي</th>
+<th>المجلد داخل القرص العام</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الوجهة</td>
+<td>2048 KB، أي 2 MB</td>
+<td><code>images/places</code></td>
+</tr>
+<tr>
+<td>الرحلة</td>
+<td>3072 KB، أي 3 MB</td>
+<td><code>images/journeys</code></td>
+</tr>
+<tr>
+<td>المحطة</td>
+<td>3072 KB، أي 3 MB</td>
+<td><code>images/stops</code></td>
+</tr>
+<tr>
+<td>نص الموقع</td>
+<td>4096 KB، أي 4 MB</td>
+<td><code>images/pages</code></td>
+</tr>
+</tbody>
+</table>
+<p>يستخدم الرفع حقل <code>image_path</code> والتحقق من كونه صورة. تؤثر أيضاً حدود PHP مثل <code>upload_max_filesize</code> و<code>post_max_size</code>. تخزن الملفات في <code>storage/app/public</code> ويعرضها الرابط <code>public/storage</code>. رسومات البذر الحالية SVG في <code>images/hero</code> و<code>images/places</code>.</p>
+<p>يختار الخادم امتداد الصورة من نوعها، ويولد اسماً فريداً UUID لتجنب تصادم الأسماء. ملفات SVG التجريبية الموجودة تستمر بالعرض، بينما الرفع الجديد يقبل الصور النقطية فقط. عدم رفع بديل عند التعديل يبقي الصورة الحالية. رفع بديل لا يحذف الملف القديم تلقائياً. يبدأ معرض الرحلة بمصفوفة <code>gallery</code> إن وجدت؛ وإلا يستخدم صورة الرحلة، ثم يضيف صور المحطات غير المكررة. تعديل صورة الرحلة لا يستبدل عناصر المعرض القديمة تلقائياً.</p>
+<h2>5. خريطة محتوى الرئيسية<a id="content-5-خريطة-محتوى-الرئيسية" href="#content-5-خريطة-محتوى-الرئيسية" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>تعدل المفاتيح التالية من <strong>Site copy</strong>. أغلب النصوص المعروضة تستخدم <code>title_en/ar</code> حتى عندما ينتهي اسم المفتاح بكلمة <code>body</code>. الحقل الطويل المستخدم فعلياً هو <code>body</code> لسجل <code>intro_body</code>.</p>
+<table>
+<thead>
+<tr>
+<th>المفتاح</th>
+<th>الحقل المستخدم</th>
+<th>موضع العرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meta_title</code></td>
+<td><code>title</code></td>
+<td>عنوان تبويب الرئيسية؛ التفاصيل تستخدم اسم السجل</td>
+</tr>
+<tr>
+<td><code>meta_description</code></td>
+<td><code>title</code></td>
+<td>الوصف الافتراضي؛ التفاصيل قد تمرر وصفاً خاصاً</td>
+</tr>
+<tr>
+<td><code>hero_eyebrow</code></td>
+<td><code>title</code></td>
+<td>السطر الصغير أعلى عنوان البداية</td>
+</tr>
+<tr>
+<td><code>hero_heading</code></td>
+<td><code>title</code> و<code>image_path</code></td>
+<td>عنوان البداية وصورتها؛ صورة النهر بديل</td>
+</tr>
+<tr>
+<td><code>hero_sub</code></td>
+<td><code>title</code></td>
+<td>فقرة البداية</td>
+</tr>
+<tr>
+<td><code>hero_cta</code></td>
+<td><code>title</code></td>
+<td>رابط الانتقال لقسم الرحلات</td>
+</tr>
+<tr>
+<td><code>intro_eyebrow</code></td>
+<td><code>title</code></td>
+<td>تسمية قسم التعريف</td>
+</tr>
+<tr>
+<td><code>intro_heading</code></td>
+<td><code>title</code></td>
+<td>عنوان التعريف</td>
+</tr>
+<tr>
+<td><code>intro_body</code></td>
+<td><code>body</code></td>
+<td>فقرات التعريف؛ عنوان السجل لا يظهر هنا</td>
+</tr>
+<tr>
+<td><code>journey_eyebrow</code></td>
+<td><code>title</code></td>
+<td>تسمية الرحلة الأساسية</td>
+</tr>
+<tr>
+<td><code>places_eyebrow</code></td>
+<td><code>title</code></td>
+<td>تسمية الوجهات</td>
+</tr>
+<tr>
+<td><code>places_heading</code></td>
+<td><code>title</code></td>
+<td>عنوان الوجهات</td>
+</tr>
+<tr>
+<td><code>categories_eyebrow</code></td>
+<td><code>title</code></td>
+<td>تسمية التجارب</td>
+</tr>
+<tr>
+<td><code>categories_heading</code></td>
+<td><code>title</code></td>
+<td>عنوان التجارب</td>
+</tr>
+<tr>
+<td><code>approach_eyebrow</code></td>
+<td><code>title</code></td>
+<td>تسمية نهج العمل</td>
+</tr>
+<tr>
+<td><code>approach_heading</code></td>
+<td><code>title</code></td>
+<td>عنوان نهج العمل</td>
+</tr>
+<tr>
+<td><code>cta_eyebrow</code></td>
+<td><code>title</code></td>
+<td>السطر الصغير في الخاتمة</td>
+</tr>
+<tr>
+<td><code>cta_heading</code></td>
+<td><code>title</code></td>
+<td>عنوان الخاتمة</td>
+</tr>
+<tr>
+<td><code>cta_body</code></td>
+<td><code>title</code></td>
+<td>فقرة الخاتمة</td>
+</tr>
+<tr>
+<td><code>cta_button</code></td>
+<td><code>title</code></td>
+<td>العودة للرحلات عند غياب بريد التواصل</td>
+</tr>
+<tr>
+<td><code>footer_tagline</code></td>
+<td><code>title</code></td>
+<td>العبارة التعريفية في التذييل</td>
+</tr>
+<tr>
+<td><code>footer_copyright</code></td>
+<td><code>title</code></td>
+<td>حقوق النشر؛ السنة تضاف من القالب</td>
+</tr>
+</tbody>
+</table>
+<p>عنوان الرحلة الأساسية ومقدمتها ووصفها وسعرها ومحطاتها تأتي من <code>Journey</code> و<code>JourneyStop</code>، والوجهات من <code>Place</code>، والتجارب من <code>Category</code>، والمبادئ من <code>ApproachPoint</code>. تسميات التنقل والأزرار العامة وحالات الفراغ معرفة في القوالب.</p>
+<p>الصورة الوحيدة المستخدمة من سجلات <code>Page</code> حالياً هي صورة <code>hero_heading</code>. رفع صورة إلى سجل آخر أو تعديل <code>body</code> خارج <code>intro_body</code> يحفظ البيانات لكنه لا يغير العرض الحالي. لا تسمح الإدارة بإنشاء مفاتيح أو حذفها؛ إضافة مفتاح وقسم جديدين تحتاج تعديل القالب وبياناته.</p>
+<h2>6. استخدام الإدارة<a id="content-6-استخدام-الإدارة" href="#content-6-استخدام-الإدارة" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<ol>
+<li>سجل الدخول عبر <code>/login</code> ثم افتح <code>/admin</code>. تعرض اللوحة حقول الإنجليزية والعربية معاً؛ زيارة الموقع العام لا تغير لغة واجهة الإدارة الإنجليزية.</li>
+<li>من <strong>Places</strong> أضف الاسم والترتيب والمقدمة والنص باللغتين والصورة. فعّل <strong>Published</strong> لإتاحة الوجهة للزوار.</li>
+<li>من <strong>Journeys</strong> أضف عنوان الرحلة ووصفها وسعرها ومدتها وصورتها. اكتب كل عنصر مشمول أو غير مشمول في سطر مستقل.</li>
+<li>احفظ الرحلة وأضف محطاتها من تحرير الرحلة. لكل محطة اسم وترتيب وتسمية ووصف وصورة اختيارية وربط اختياري بوجهة.</li>
+<li>استخدم <strong>Categories</strong> لفئات التجارب و<strong>Approach points</strong> لمبادئ العمل؛ الترتيب يحدد ظهورها.</li>
+<li>عدل <strong>Site copy</strong> وفق جدول المفاتيح. صورة البداية تخص <code>hero_heading</code>.</li>
+<li>راجع النتيجة باللغتين. روابط عرض التفاصيل متاحة للسجلات المنشورة.</li>
+<li>من <strong>Account</strong> عدل الحساب أو كلمة المرور. حذف الحساب يتطلب كلمة المرور الحالية وينهي الجلسة.</li>
+</ol>
+<h3>الروابط المختصرة Slugs<a id="content-الروابط-المختصرة-slugs" href="#content-الروابط-المختصرة-slugs" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<p>للرحلات والوجهات والفئات <code>slug</code> فريد. تركه فارغاً يولده من العنوان الإنجليزي أو اسم الوجهة. تطبّع القيمة قبل فحص التفرد؛ التعارض يعيد خطأ تحقق يمكن تصحيحه بالنموذج بدلاً من خطأ قاعدة بيانات.</p>
+<p>تغيير <code>slug</code> يغير الرابط، ولا توجد تحويلات تلقائية من الروابط القديمة. روابط الموقع المولدة تتبع القيمة الجديدة. المحطات ونصوص الموقع تستخدم معرفات رقمية في مسارات الإدارة؛ يبقى <code>key</code> الخاص بنص الموقع ثابتاً.</p>
+<h2>7. المسارات<a id="content-7-المسارات" href="#content-7-المسارات" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>المصدر المعتمد <code>routes/web.php</code> و<code>routes/auth.php</code>. تقبل مسارات <code>GET</code> أيضاً <code>HEAD</code> وفق Laravel. يمكن استعراض المسارات الفعلية باستخدام <code>php artisan route:list --except-vendor</code>.</p>
+<h3>الموقع العام<a id="content-الموقع-العام" href="#content-الموقع-العام" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>الطريقة</th>
+<th>المسار</th>
+<th>الاسم / الوظيفة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/</code></td>
+<td><code>home</code>، الرئيسية الإنجليزية</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/en</code> أو <code>/ar</code></td>
+<td><code>home.locale</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/places/{place:slug}</code></td>
+<td><code>places.show</code>، تفاصيل إنجليزية</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/places/{place:slug}/{locale}</code></td>
+<td><code>places.show.locale</code>؛ اللغة <code>en</code> أو <code>ar</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/journeys/{journey:slug}</code></td>
+<td><code>journeys.show</code>، تفاصيل إنجليزية</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/journeys/{journey:slug}/{locale}</code></td>
+<td><code>journeys.show.locale</code>؛ اللغة <code>en</code> أو <code>ar</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/up</code></td>
+<td>فحص صحة Laravel من <code>bootstrap/app.php</code></td>
+</tr>
+</tbody>
+</table>
+<p>مراسي الرئيسية <code>#journey</code> و<code>#places</code> و<code>#approach</code> و<code>#contact</code>، مع <code>#top</code> للعودة للأعلى و<code>#main</code> للانتقال للمحتوى. تعرض صفحة الخطأ <code>404</code> تنسيقاً متوافقاً مع الهوية؛ قوالب الأخطاء في <code>resources/views/errors</code>.</p>
+<h3>الدخول والحساب<a id="content-الدخول-والحساب" href="#content-الدخول-والحساب" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>الطريقة</th>
+<th>المسار</th>
+<th>الاسم</th>
+<th>الوصول / الوظيفة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/register</code></td>
+<td><code>register</code></td>
+<td>ضيف: التسجيل</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/register</code></td>
+<td>بلا اسم مستقل</td>
+<td>ضيف: إنشاء الحساب وبدء الجلسة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/login</code></td>
+<td><code>login</code></td>
+<td>ضيف: الدخول</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/login</code></td>
+<td>بلا اسم مستقل</td>
+<td>ضيف: بدء الجلسة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/forgot-password</code></td>
+<td><code>password.request</code></td>
+<td>ضيف: طلب الاستعادة</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/forgot-password</code></td>
+<td><code>password.email</code></td>
+<td>ضيف: إرسال رابط الاستعادة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/reset-password/{token}</code></td>
+<td><code>password.reset</code></td>
+<td>ضيف: نموذج إعادة التعيين</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/reset-password</code></td>
+<td><code>password.store</code></td>
+<td>ضيف: حفظ كلمة المرور الجديدة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/verify-email</code></td>
+<td><code>verification.notice</code></td>
+<td>مسجل: إشعار التحقق</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/verify-email/{id}/{hash}</code></td>
+<td><code>verification.verify</code></td>
+<td>مسجل، رابط موقّع، حد 6 طلبات بالدقيقة</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/email/verification-notification</code></td>
+<td><code>verification.send</code></td>
+<td>مسجل: إعادة الإرسال، حد 6 طلبات بالدقيقة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/confirm-password</code></td>
+<td><code>password.confirm</code></td>
+<td>مسجل: نموذج التأكيد</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/confirm-password</code></td>
+<td>بلا اسم مستقل</td>
+<td>مسجل: التحقق من كلمة المرور</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/password</code></td>
+<td><code>password.update</code></td>
+<td>مسجل: تغيير كلمة المرور</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/profile</code></td>
+<td><code>profile.edit</code></td>
+<td>مسجل: إعدادات الحساب</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>/profile</code></td>
+<td><code>profile.update</code></td>
+<td>مسجل: تحديث الاسم والبريد</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/profile</code></td>
+<td><code>profile.destroy</code></td>
+<td>مسجل: الحذف بعد تأكيد كلمة المرور</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/logout</code></td>
+<td><code>logout</code></td>
+<td>مسجل: إنهاء الجلسة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/dashboard</code></td>
+<td><code>dashboard</code></td>
+<td>يحول إلى لوحة الإدارة الموحدة <code>/admin</code></td>
+</tr>
+</tbody>
+</table>
+<p>وجود مسارات التحقق لا يفرض التحقق من البريد على الدخول أو الإدارة. تستخدم النماذج CSRF وحقول <code>_method</code> لعمليات مثل <code>PATCH</code> و<code>DELETE</code>.</p>
+<h3>الإدارة<a id="content-الإدارة" href="#content-الإدارة" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<p>مسارات <code>/admin</code> محمية بالمصادقة وتستخدم <code>SetAdminLocale</code> لضبط واجهة الإدارة بالإنجليزية مع حقول المحتوى باللغتين. اسم <code>GET /admin</code> هو <code>admin.dashboard</code>، وبادئة أسماء الموارد هي <code>admin.</code>. تعيد روابط اللوحات القديمة <code>/admin/en</code> و<code>/admin/ar</code> التوجيه إلى المسارات الموحدة. الموارد التالية تستخدم نمط العمليات نفسه:</p>
+<table>
+<thead>
+<tr>
+<th>المورد</th>
+<th>معامل السجل</th>
+<th>المتحكم</th>
+<th>أساس اسم المسار</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>places</code></td>
+<td><code>{place}</code>، slug</td>
+<td><code>Admin\PlaceController</code></td>
+<td><code>admin.places</code></td>
+</tr>
+<tr>
+<td><code>journeys</code></td>
+<td><code>{journey}</code>، slug</td>
+<td><code>Admin\JourneyController</code></td>
+<td><code>admin.journeys</code></td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td><code>{category}</code>، slug</td>
+<td><code>Admin\CategoryController</code></td>
+<td><code>admin.categories</code></td>
+</tr>
+<tr>
+<td><code>approach-points</code></td>
+<td><code>{approach_point}</code>، معرف رقمي</td>
+<td><code>Admin\ApproachPointController</code></td>
+<td><code>admin.approach-points</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>الطريقة</th>
+<th>نمط المسار لكل مورد</th>
+<th>لاحقة الاسم</th>
+<th>العملية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/admin/{resource}</code></td>
+<td><code>.index</code></td>
+<td>القائمة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/admin/{resource}/create</code></td>
+<td><code>.create</code></td>
+<td>نموذج الإضافة</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/admin/{resource}</code></td>
+<td><code>.store</code></td>
+<td>الحفظ</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/admin/{resource}/{record}/edit</code></td>
+<td><code>.edit</code></td>
+<td>نموذج التعديل</td>
+</tr>
+<tr>
+<td>PUT أو PATCH</td>
+<td><code>/admin/{resource}/{record}</code></td>
+<td><code>.update</code></td>
+<td>حفظ التعديل</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/admin/{resource}/{record}</code></td>
+<td><code>.destroy</code></td>
+<td>الحذف</td>
+</tr>
+</tbody>
+</table>
+<p>لا يوجد مسار <code>show</code> إداري لهذه الموارد. <code>{record}</code> هو معامل السجل المحدد في الجدول السابق.</p>
+<table>
+<thead>
+<tr>
+<th>الطريقة</th>
+<th>مسار المحطات</th>
+<th>الاسم</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/admin/journeys/{journey}/stops</code></td>
+<td><code>admin.journeys.stops.index</code>؛ يحول إلى تحرير الرحلة</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/admin/journeys/{journey}/stops/create</code></td>
+<td><code>admin.journeys.stops.create</code></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/admin/journeys/{journey}/stops</code></td>
+<td><code>admin.journeys.stops.store</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/admin/journeys/{journey}/stops/{stop}/edit</code></td>
+<td><code>admin.journeys.stops.edit</code></td>
+</tr>
+<tr>
+<td>PUT أو PATCH</td>
+<td><code>/admin/journeys/{journey}/stops/{stop}</code></td>
+<td><code>admin.journeys.stops.update</code></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/admin/journeys/{journey}/stops/{stop}</code></td>
+<td><code>admin.journeys.stops.destroy</code></td>
+</tr>
+</tbody>
+</table>
+<p>تستخدم <code>{journey}</code> الرابط المختصر و<code>{stop}</code> المعرف الرقمي. طلب محطة عبر رحلة أخرى يرجع <code>404</code> ولا يعدلها أو يحذفها.</p>
+<table>
+<thead>
+<tr>
+<th>الطريقة</th>
+<th>مسار نصوص الموقع</th>
+<th>الاسم</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/admin/pages</code></td>
+<td><code>admin.pages.index</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/admin/pages/{page}/edit</code></td>
+<td><code>admin.pages.edit</code></td>
+</tr>
+<tr>
+<td>PUT أو PATCH</td>
+<td><code>/admin/pages/{page}</code></td>
+<td><code>admin.pages.update</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>{page}</code> معرف رقمي؛ لا توجد عمليات إنشاء أو حذف أو عرض مستقل لنصوص الموقع.</p>
+<h2>8. نظام التصميم المشترك<a id="content-8-نظام-التصميم-المشترك" href="#content-8-نظام-التصميم-المشترك" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>الألوان الأساسية في <code>public/css/meso-travels.css</code>. تستخدمها ملفات الإدارة والحساب عبر متغيرات CSS.</p>
+<table>
+<thead>
+<tr>
+<th>المتغير</th>
+<th>القيمة</th>
+<th>الاستخدام</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--ink</code></td>
+<td><code>#081a24</code></td>
+<td>النصوص والخلفيات الداكنة</td>
+</tr>
+<tr>
+<td><code>--ink-soft</code></td>
+<td><code>#183342</code></td>
+<td>النصوص الثانوية</td>
+</tr>
+<tr>
+<td><code>--lapis</code></td>
+<td><code>#063e61</code></td>
+<td>الأزرق الرئيسي</td>
+</tr>
+<tr>
+<td><code>--lapis-deep</code></td>
+<td><code>#061b2a</code></td>
+<td>الرأس والأقسام الداكنة</td>
+</tr>
+<tr>
+<td><code>--river</code></td>
+<td><code>#2a7188</code></td>
+<td>الروابط والعناصر المساندة</td>
+</tr>
+<tr>
+<td><code>--sand</code></td>
+<td><code>#e8d1a4</code></td>
+<td>التفاصيل والخلفيات الرملية</td>
+</tr>
+<tr>
+<td><code>--sun</code></td>
+<td><code>#efb657</code></td>
+<td>الذهبي والأزرار البارزة</td>
+</tr>
+<tr>
+<td><code>--paper</code></td>
+<td><code>#f4efe5</code></td>
+<td>خلفية الصفحات</td>
+</tr>
+<tr>
+<td><code>--paper-bright</code></td>
+<td><code>#fbf8f1</code></td>
+<td>البطاقات والنماذج</td>
+</tr>
+<tr>
+<td><code>--white</code></td>
+<td><code>#fffdf8</code></td>
+<td>النصوص الفاتحة</td>
+</tr>
+<tr>
+<td><code>--line</code></td>
+<td><code>rgba(8, 26, 36, 0.18)</code></td>
+<td>الحدود والفواصل</td>
+</tr>
+</tbody>
+</table>
+<p>الإنجليزية تستخدم <strong>Newsreader</strong> للعناوين و<strong>DM Sans</strong> للنصوص. العربية تستخدم <strong>Noto Naskh Arabic</strong> للعناوين و<strong>Noto Kufi Arabic</strong> للنصوص. تحمل الخطوط من Google Fonts مع عائلات بديلة محلية عند تعذر التحميل.</p>
+<table>
+<thead>
+<tr>
+<th>الملف</th>
+<th>المسؤولية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public/css/meso-travels.css</code></td>
+<td>الهوية والرئيسية والتفاصيل والرأس والتذييل وRTL</td>
+</tr>
+<tr>
+<td><code>public/css/meso-admin.css</code></td>
+<td>الإدارة والتنقل والجداول والنماذج والرسائل</td>
+</tr>
+<tr>
+<td><code>public/css/meso-account.css</code></td>
+<td>الدخول والتسجيل وكلمات المرور والملف الشخصي</td>
+</tr>
+<tr>
+<td><code>resources/css/app.css</code></td>
+<td>مدخل Tailwind والأساسيات المبنية</td>
+</tr>
+<tr>
+<td><code>public/js/meso-travels.js</code></td>
+<td>قائمة الموقع العام والتركيز وحالة الرأس</td>
+</tr>
+<tr>
+<td><code>resources/js/app.js</code></td>
+<td>تهيئة Alpine للمكونات</td>
+</tr>
+</tbody>
+</table>
+<p>الموقع العام يحمل CSS وJavaScript العامين مباشرة من <code>public</code>، بينما تحمل الإدارة والحساب أيضاً نواتج Vite. بعد تعديل مصادر البناء أو أصناف Tailwind بالقوالب، أعد <code>npm run build</code>. تعديل ملفات <code>public/css</code> و<code>public/js</code> لا يحتاج Vite لكنه قد يحتاج تحديث ذاكرة المتصفح.</p>
+<h2>9. التشغيل المحلي وXAMPP<a id="content-9-التشغيل-المحلي-وxampp" href="#content-9-التشغيل-المحلي-وxampp" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>يلزم PHP 8.2+ وComposer وNode.js/npm متوافقان مع Vite 6 وإضافات PHP المطلوبة في Composer. يلزم <code>pdo_sqlite</code> لـSQLite والاختبارات، أو امتداد MySQL عند اختياره. استخدم PHP متوافقاً في سطر الأوامر وApache.</p>
+<h3>تثبيت جديد<a id="content-تثبيت-جديد" href="#content-تثبيت-جديد" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<ol>
+<li>
+<p>ثبت الاعتماديات:</p>
+<pre><code class="language-bash">composer install
+npm ci
+npm run build
+</code></pre>
+</li>
+<li>
+<p>انسخ <code>.env.example</code> إلى <code>.env</code> <strong>فقط إن لم يكن ملف البيئة موجوداً</strong>، واضبط <code>APP_URL</code> وقاعدة البيانات. لا تستبدل ملف بيئة قائم.</p>
+</li>
+<li>
+<p>لـSQLite أنشئ <code>database/database.sqlite</code> واضبط <code>DB_CONNECTION=sqlite</code> و<code>DB_DATABASE</code> إلى مساره. أو اضبط اتصال MySQL بقاعدة XAMPP المناسبة.</p>
+</li>
+<li>
+<p>في التثبيت الأول أنشئ مفتاح التطبيق، ثم الجداول ورابط التخزين:</p>
+<pre><code class="language-bash">php artisan key:generate
+php artisan migrate
+php artisan storage:link
+</code></pre>
+</li>
+<li>
+<p>أضف المحتوى والحساب <strong>التجريبيين</strong> عند الحاجة في تثبيت جديد:</p>
+<pre><code class="language-bash">php artisan db:seed
+</code></pre>
+</li>
+<li>
+<p>شغل الموقع:</p>
+<pre><code class="language-bash">php artisan serve
+</code></pre>
+</li>
+</ol>
+<p>يمكن استخدام <code>npm run dev</code> أثناء تطوير الواجهة. يحتاج تحميل أصول التطوير إلى خادم Vite العامل، بينما تستخدم ملفات <code>public/build</code> للنشر.</p>
+<h3>Apache في XAMPP<a id="content-apache-في-xampp" href="#content-apache-في-xampp" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<p>اجعل <code>DocumentRoot</code> يشير إلى <code>public</code>، مثل <code>/Applications/XAMPP/xamppfiles/htdocs/hasan/public</code> في النسخة المحلية على macOS. لا تجعل مجلد المشروع الذي يحتوي <code>.env</code> و<code>vendor</code> جذر الويب.</p>
+<p>فعّل إعادة كتابة الروابط واسمح بقواعد <code>public/.htaccess</code> عبر <code>AllowOverride All</code>. اضبط <code>APP_URL</code> على العنوان الفعلي بما فيه المسار الفرعي إن استخدم. يحتاج مستخدم PHP إلى الكتابة في <code>storage</code> و<code>bootstrap/cache</code>، وملف SQLite ومجلده عند اختياره. يجب أن يشير <code>public/storage</code> إلى <code>storage/app/public</code> في الجهاز الحالي؛ قد يحتاج إعادة إنشاء عند نقل المشروع.</p>
+<h3>بيانات التجربة<a id="content-بيانات-التجربة" href="#content-بيانات-التجربة" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<p>في local/testing فقط، ينشئ <code>AdminUserSeeder</code> المستخدم <code>admin@iraqrevealed.test</code> بكلمة المرور <code>password</code>. هذه بيانات تجريبية معلنة وليست بيانات البيئة الفعلية. غيّرها قبل استخدام بيانات حقيقية.</p>
+<p>تستخدم أدوات بذر المحتوى <code>updateOrCreate</code>؛ إعادة تشغيلها قد تستبدل النصوص والرحلات التجريبية المعدلة. بذر الحساب التجريبي محصور في local/testing ولا يعيد تعيين كلمة مرور حساب موجود؛ يمنحه وصولاً إنجليزياً. البذر خطوة إعداد أولي أو عرض تجريبي، وليس خطوة نشر دورية أو شرطاً لتطبيق تغيير التصميم.</p>
+<h2>10. إعداد البيئة والتواصل والبريد<a id="content-10-إعداد-البيئة-والتواصل-والبريد" href="#content-10-إعداد-البيئة-والتواصل-والبريد" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>المتغيرات</th>
+<th>الغرض</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APP_NAME</code></td>
+<td>اسم Laravel في المواضع التي تستخدمه؛ هوية القوالب Meso Travels</td>
+</tr>
+<tr>
+<td><code>APP_URL</code></td>
+<td>أصل روابط التطبيق، خصوصاً المولدة خارج طلب المتصفح</td>
+</tr>
+<tr>
+<td><code>APP_ENV</code> و<code>APP_DEBUG</code></td>
+<td>بيئة التشغيل وتفاصيل الأخطاء</td>
+</tr>
+<tr>
+<td><code>APP_KEY</code></td>
+<td>مفتاح التشفير؛ ينشأ أول مرة ويحافظ عليه لاحقاً</td>
+</tr>
+<tr>
+<td><code>DB_CONNECTION</code> و<code>DB_DATABASE</code> وبقية <code>DB_*</code></td>
+<td>قاعدة البيانات والاتصال</td>
+</tr>
+<tr>
+<td><code>CONTACT_EMAIL_EN</code> و<code>CONTACT_EMAIL_AR</code></td>
+<td>بريد استفسار مستقل لكل لغة</td>
+</tr>
+<tr>
+<td><code>CONTACT_EMAIL</code></td>
+<td>بديل مشترك عند غياب بريد اللغة</td>
+</tr>
+<tr>
+<td><code>REGISTRATION_ENABLED</code></td>
+<td>فتح التسجيل العام اختيارياً؛ الافتراضي false ولا يمنح التسجيل صلاحية إدارة</td>
+</tr>
+<tr>
+<td><code>MAIL_MAILER</code> وبقية <code>MAIL_*</code></td>
+<td>إرسال رسائل الحساب من الخادم</td>
+</tr>
+<tr>
+<td><code>SESSION_DRIVER</code> و<code>CACHE_STORE</code></td>
+<td>تخزين الجلسات والذاكرة المؤقتة</td>
+</tr>
+<tr>
+<td><code>QUEUE_CONNECTION</code></td>
+<td>مشغل وظائف Laravel الخلفية عند استخدامها</td>
+</tr>
+</tbody>
+</table>
+<p>يقرأ <code>config/site.php</code> قيم <code>CONTACT_EMAIL_EN</code> و<code>CONTACT_EMAIL_AR</code>، مع <code>CONTACT_EMAIL</code> كبديل مشترك. تتقدم قيمة محفوظة من صفحة إعدادات التواصل في اللوحة الموحدة على قيمة البيئة. لا تفعّل عناوين <code>.test</code> روابط البريد العامة، لأنها أمثلة محلية وليست صناديق بريد حقيقية. عند غياب بريد صالح تعرض تفاصيل الرحلة رسالة توفر معلومات التواصل والحجز لاحقاً، وتعيد خاتمة الرئيسية الزائر إلى الرحلات. عند ضبطه يظهر رابط بريد مع عنوان رسالة خاص بالرحلة عند الحاجة.</p>
+<p>ضبط بريد الاستفسار لا يشغل البريد الصادر من الخادم. لاستعادة كلمة المرور فعلياً اضبط ناقل بريد صالح في <code>config/mail.php</code> بمتغيرات مثل <code>MAIL_MAILER</code> و<code>MAIL_HOST</code> و<code>MAIL_PORT</code> و<code>MAIL_USERNAME</code> و<code>MAIL_PASSWORD</code> و<code>MAIL_FROM_ADDRESS</code> و<code>MAIL_FROM_NAME</code> وما يحتاجه المزود. الإعداد الافتراضي <code>log</code> يسجل الرسالة ولا يرسلها إلى صندوق خارجي.</p>
+<p>يتضمن <code>.env.example</code> اسم Meso Travels وحقول بريد التواصل الثلاثة فارغة و<code>REGISTRATION_ENABLED=false</code>. لم يتطلب هذا التحديث تعديل <code>.env</code> الفعلي. لا تضع أسرار البيئة في المستند أو مستودع الشيفرة. بعد تغيير إعدادات مخزنة مؤقتاً استخدم:</p>
+<pre><code class="language-bash">php artisan config:clear
+</code></pre>
+<h2>11. الاختبارات والتحقق<a id="content-11-الاختبارات-والتحقق" href="#content-11-الاختبارات-والتحقق" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<pre><code class="language-bash">php artisan test
+php artisan test --filter=LinkIntegrityTest
+npm run build
+php artisan route:list --except-vendor
+</code></pre>
+<p>يضبط <code>phpunit.xml</code> اتصال الاختبار إلى <code>sqlite</code> و<code>:memory:</code>، والبريد والجلسات والذاكرة المؤقتة إلى بدائل اختبارية. تستخدم اختبارات البيانات <code>RefreshDatabase</code>. لا تشغّل اختبارات تحديث البيانات على قاعدة فعلية؛ إذا كانت إعدادات Laravel مخزنة مؤقتاً من بيئة أخرى فامسح ذاكرة الإعداد وتحقق من اتصال الاختبار.</p>
+<table>
+<thead>
+<tr>
+<th>الاختبارات</th>
+<th>التغطية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HomepageTest</code></td>
+<td>الرئيسية والعربية وتفاصيل الوجهات وحالة النشر</td>
+</tr>
+<tr>
+<td><code>JourneyFeatureTest</code></td>
+<td>الرحلات والأسعار والصور والنصوص والعربية والإنشاء الإداري</td>
+</tr>
+<tr>
+<td><code>AdminAccessTest</code></td>
+<td>دخول الإدارة وحفظ محتوى جديد</td>
+</tr>
+<tr>
+<td><code>LinkIntegrityTest</code></td>
+<td>إجراءات المسارات وتقييد المحطات والعلاقات المنشورة واللغة وتصادم slugs والصور والتواصل</td>
+</tr>
+<tr>
+<td><code>PublicContentTest</code></td>
+<td>ظهور تعديلات المحتوى والسجلات المنشورة باللغتين، صلاحية الروابط والمراسي العامة، وإظهار التواصل عند ضبط البريد</td>
+</tr>
+<tr>
+<td><code>DashboardLanguagesTest</code></td>
+<td>الدخول الموحد للحسابات الحالية، تحويل الروابط القديمة، تحرير اللغتين، وبريدا التواصل معاً</td>
+</tr>
+<tr>
+<td><code>DashboardUploadTest</code></td>
+<td>أسماء صور فريدة وامتدادات يحددها الخادم والحفاظ على الصورة عند تعديل النص</td>
+</tr>
+<tr>
+<td><code>Auth/*</code> و<code>ProfileTest</code></td>
+<td>التسجيل والدخول وكلمات المرور والتحقق وتحديث الحساب</td>
+</tr>
+</tbody>
+</table>
+<p>تراجع الواجهة أيضاً بعروض ضيقة، مع تجربة القائمة بعد التمرير واللغة البديلة والنماذج والروابط. نجاح طلب HTTP وحده لا يثبت شكل الواجهة أو وصول خدمة بريد خارجية.</p>
+<h3>نتائج التحقق على هذه النسخة<a id="content-نتائج-التحقق-على-هذه-النسخة" href="#content-نتائج-التحقق-على-هذه-النسخة" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h3>
+<ul>
+<li>نجحت مجموعة الاختبارات: <strong>54 اختباراً، 600 تحقق</strong>، وخروج بالأكواد الناجحة. ظهرت إشعارات تقادم تخص <code>PDO::MYSQL_ATTR_SSL_CA</code> مع PHP 8.5 من اعتماديات Laravel.</li>
+<li>نجح <code>npm run build</code> وتجميع قوالب Blade عبر <code>php artisan view:cache</code>.</li>
+<li>شمل فحص Chrome عروض <strong>1440 و390 و320 بكسل</strong>، مع <strong>30 فحص صفحة/عرض</strong> للرئيسية والوجهات والرحلات بالعربية والإنجليزية وصفحات الدخول والتسجيل ونسيان كلمة المرور وإعادة تعيينها.</li>
+<li>شملت مراجعة HTML المعزول للإدارة والحساب والتأكيد والتحقق <strong>24 فحص صفحة/عرض</strong>، بما فيها القوائم والإضافة والتعديل ونصوص الموقع. تأكد فتح نافذة حذف الحساب.</li>
+<li>لم تظهر أخطاء JavaScript أو صور مفقودة أو تجاوزات أفقية للصفحة في الصفحات والأحجام المفحوصة. اختبرت كذلك صفحة <code>404</code> ذات الهوية المشتركة.</li>
+<li>قبل إعادة توحيد اللوحة، فُحصت إضافات المظهر في Chrome بـ65 تحققاً: دخول الحسابين، الشاشات 1440 و390 و320 بكسل، الوضعان الفاتح والداكن، حفظ الاختيار، تفضيل النظام، والعمل عند حظر localStorage. لم تظهر أخطاء JavaScript أو صور مفقودة أو تمرير أفقي زائد.</li>
+<li>هذه النتائج لا تتضمن إثبات إرسال SMTP إلى بريد خارجي أو تنفيذ حجز أو دفع؛ الحجز والدفع غير منفذين في المشروع.</li>
+</ul>
+<h2>12. النشر والصيانة<a id="content-12-النشر-والصيانة" href="#content-12-النشر-والصيانة" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>اضبط جذر الويب إلى <code>public</code> وإعدادات البيانات والتخزين والبريد والعنوان العام، واستخدم <code>APP_DEBUG=false</code> للإنتاج. افصل تحديث التطبيق عن توليد البيانات التجريبية، واحفظ نسخة من قاعدة البيانات و<code>storage/app/public</code> قبل تغييرات البيانات.</p>
+<p>خطوات تحديث اعتيادية بعد تجهيز البيئة ومراجعة التغييرات:</p>
+<pre><code class="language-bash">composer install --no-dev --optimize-autoloader
+npm ci
+npm run build
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+</code></pre>
+<p>تشغّل الاختبارات في بيئة تطوير أو CI قبل تثبيت اعتماديات الإنتاج بـ<code>--no-dev</code>. تنفذ الهجرات وفق خطة النشر والنسخ الاحتياطي. لا تعِد <code>key:generate</code> على تطبيق قائم ولا <code>db:seed</code> على محتوى محرر ضمن نشر الملفات.</p>
+<p>عند النقل، انقل الصور وأعد ضبط رابط التخزين. عند تعديل CSS المباشر تحقق من ذاكرة المتصفح. عند تغيير slug منشور حدّث الروابط الخارجية المعروفة لعدم وجود تحويل تلقائي.</p>
+<p>الإدارة مشتركة لجميع الحسابات المسجلة. التسجيل العام مغلق افتراضياً؛ تفعيله يمنح الحسابات الجديدة إمكانية إدارة المحتوى. لا يوجد تقسيم لملكية الرحلات بين الحسابات، والتحقق من البريد غير مفروض.</p>
+<h2>13. الإصلاحات والتنظيم المنفذان<a id="content-13-الإصلاحات-والتنظيم-المنفذان" href="#content-13-الإصلاحات-والتنظيم-المنفذان" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<ul>
+<li>توحيد الهوية والألوان والخطوط والشعار في الإدارة والمصادقة والحساب والتفاصيل والأخطاء، مع ملفات CSS تستفيد من المتغيرات المشتركة.</li>
+<li>ربط الرئيسية بمحتوى قاعدة البيانات وإزالة روابط الوجهات الثابتة من خط السير.</li>
+<li>جعل اللغة روابط حقيقية تحافظ على الصفحة؛ لم يعد JavaScript يستبدل النصوص بما يمحو الروابط أو يتجاوز المحتوى المحفوظ.</li>
+<li>تمرير بيانات العنوان والوصف والنصوص ورابط اللغة البديلة إلى <code>AppLayout</code>، وتصحيح مراسي العودة.</li>
+<li>تحسين RTL والتجاوب والنماذج والقائمة؛ معالجة تأثير مرشح الرأس على قائمة الهاتف بعد التمرير.</li>
+<li>إخفاء الروابط العامة للمحتوى غير المنشور مع الحفاظ على نص المحطات، وعدم عرض معاينة عامة مضمونة الفشل للمسودات.</li>
+<li>تقييد المحطات برحلاتها الصحيحة في مسارات التحرير والحذف.</li>
+<li>إزالة مسار عرض نصوص الموقع الإداري الذي لم يكن له إجراء منفذ.</li>
+<li>فحص تفرد slug بعد التطبيع ومعالجة التصادم كخطأ تحقق.</li>
+<li>توحيد روابط الصور وعرض الصورة الحالية في تحرير الوجهة، واستكمال الحقول العربية في نموذجها.</li>
+<li>استبدال بريد الاستفسار الوهمي بإعداد <code>CONTACT_EMAIL</code> وحالة واضحة عند غيابه.</li>
+<li>إضافة اختبارات لمشكلات الربط، وتوثيق المميزات والحدود الفعلية.</li>
+</ul>
+<p>أعيدت الإدارة إلى لوحة واحدة دون قيود لغة على الحسابات، مع إبقاء التسجيل العام مغلقاً افتراضياً. لا يوجد نظام حجز أو دفع، ولا يحتاج التحديث إعادة بذر المحتوى.</p>
+<h2>14. لوحة موحدة والوضع الداكن — تحديث 27 سبتمبر<a id="content-14-لوحة-موحدة-والوضع-الداكن--تحديث-27-سبتمبر" href="#content-14-لوحة-موحدة-والوضع-الداكن--تحديث-27-سبتمبر" class="heading-anchor" aria-hidden="true" tabindex="-1" title="Permalink">#</a></h2>
+<p>الدخول عبر <code>/login</code> والإدارة عبر <code>/admin</code>. تعرض النماذج حقول الإنجليزية والعربية معاً كما كانت سابقاً. أزيل الفصل بحسب لغة الحساب وزر الانتقال إلى دخول لغة أخرى. تحول روابط اللوحات القديمة إلى المسارات المشتركة.</p>
+<p>لم تُحذف حسابات أو بيانات ولم تتغير كلمات المرور. يعمل الحساب الأصلي والحسابان المحليان السابقان من شاشة الدخول نفسها. تبقى كلمات المرور المحلية المولدة في <code>storage/app/private/dashboard-accounts.txt</code> خارج مجلد الويب. أبقي حقل <code>dashboard_locale</code> التاريخي في قاعدة البيانات دون الاعتماد عليه؛ لا تحتاج العودة إلى اللوحة الموحدة إلى ترحيل أو إعادة بذر.</p>
+<p>لإنشاء حساب أو تحديث كلمة مروره محلياً:</p>
+<pre><code class="language-bash">php artisan dashboard:account admin@your-domain.com
+</code></pre>
+<p>يسأل الأمر عن كلمة مرور مخفية وتأكيدها، ويتطلب تأكيداً قبل تحديث حساب موجود. لا يحتاج معامل لغة. أزيل أمر إنشاء اللوحتين المنفصلتين.</p>
+<p>تعرض <strong>Contact settings</strong> بريد الصفحة الإنجليزية وبريد الصفحة العربية في نموذج واحد. بقيت العناوين المحفوظة دون تغيير. عناوين <code>.test</code> أمثلة محلية ولا تنشئ صناديق بريد ولا تفعّل روابط بريد عامة؛ استبدلها بعناوين فعلية تملكها.</p>
+<p>بقيت الإرشادات القصيرة وزر الوضع الفاتح/الداكن. يتبع المظهر تفضيل النظام أولاً ثم يحفظ الاختيار في <code>localStorage</code> بمفتاح <code>meso-theme</code>. الملفات المشتركة: <code>public/js/meso-theme.js</code> و<code>public/css/meso-theme.css</code> والمكون <code>theme-toggle</code> والجزء <code>partials/theme-head</code>.</p>
+</main><footer>نسخة قابلة للقراءة والطباعة · المرجع القابل للتحرير: PROJECT_GUIDE_AR.md</footer></body></html>
