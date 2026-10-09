@@ -15,6 +15,8 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
+    'public_media_fallback' => env('PUBLIC_MEDIA_FALLBACK', false),
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
@@ -33,6 +35,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
+            'url' => env('APP_URL').'/private-storage',
             'serve' => true,
             'throw' => false,
             'report' => false,

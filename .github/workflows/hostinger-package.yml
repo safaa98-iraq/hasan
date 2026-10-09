@@ -1,0 +1,37 @@
+name: Prepare Hostinger package
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: ctype, curl, dom, fileinfo, gd, iconv, mbstring, openssl, pdo_mysql, pdo_sqlite, xml
+          tools: composer:v2
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run application regression tests
+        run: |
+          composer install --prefer-dist --no-interaction --no-progress
+          npm ci --no-audit --no-fund
+          npm run build
+          APP_KEY="$(php -r 'echo "base64:".base64_encode(random_bytes(32));')" vendor/bin/phpunit
+      - name: Prepare and verify production ZIP
+        run: bash scripts/prepare-hostinger.sh --without-sql
+      - uses: actions/upload-artifact@v4
+        with:
+          name: meso-hostinger-production
+          path: dist/hostinger/
+          if-no-files-found: error
+          retention-days: 14

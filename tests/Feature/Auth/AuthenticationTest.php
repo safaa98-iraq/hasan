@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -40,6 +41,22 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertGuest();
+    }
+
+    public function test_existing_argon_password_can_authenticate_with_bcrypt_default(): void
+    {
+        config(['hashing.driver' => 'bcrypt']);
+        $user = User::factory()->create();
+        DB::table('users')->where('id', $user->id)->update([
+            'password' => password_hash('existing-password', PASSWORD_ARGON2ID),
+        ]);
+
+        $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'existing-password',
+        ])->assertRedirect(route('dashboard', absolute: false));
+
+        $this->assertAuthenticatedAs($user);
     }
 
     public function test_users_can_logout(): void
